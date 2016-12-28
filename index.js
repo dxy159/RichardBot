@@ -23,7 +23,7 @@ app.get('/webhook/', function (req, res) {
     if (req.query['hub.verify_token'] === 'my_voice_is_my_password_verify_me') {
         res.send(req.query['hub.challenge'])
     }
-    res.send('887863829')
+    res.send('Error, wrong token')
 })
 
 // Spin up the server
