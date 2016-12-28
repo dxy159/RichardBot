@@ -46,6 +46,9 @@ app.post('/webhook/', function (req, res) {
     res.sendStatus(200)
 })
 
+// Inject token as environmental variables
+const token = process.env.FB_PAGE_ACCESS_TOKEN
+
 // To echo back messages
 function sendTextMessage(sender, text) {
     let messageData = { text:text }
@@ -66,9 +69,6 @@ function sendTextMessage(sender, text) {
     })
 }
 
-
-// Inject token as environmental variables
-const token = process.env.FB_PAGE_ACCESS_TOKEN
 
 
 
