@@ -1,9 +1,10 @@
 'use strict'
 
-var express = require('express')
-var bodyParser = require('body-parser')
-var request = require('request')
-var app = express()
+const express = require('express')
+const bodyParser = require('body-parser')
+const request = require('request')
+const app = express()
+const token = process.env.FB_PAGE_ACCESS_TOKEN
 
 app.set('port', (process.env.PORT || 5000))
 
