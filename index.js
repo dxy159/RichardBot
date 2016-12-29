@@ -51,7 +51,3 @@ app.post('/webhooks', function (req, res) {
 
   res.sendStatus(200)
 })
-
-
-
-
