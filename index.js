@@ -45,7 +45,7 @@ app.post('/webhook/', function (req, res) {
             continue
         }
         if (text === 'Hey its Colin') {
-            sendGenericMessage(sender, "Hi Colin you should switch into Software Engineering!!")
+            sendTextMessage(sender, "Hi Colin you should switch into Software Engineering!!")
         } else {
             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
         }
