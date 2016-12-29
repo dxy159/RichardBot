@@ -1,17 +1,30 @@
 {
-  "name": "messengerbotwitai",
+  "name": "richardbot",
   "version": "1.0.0",
-  "description": "",
+  "description": "Richard's amazing facebook messenger bot.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "testrichardbot"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dxy159/RichardBot.git"
+  },
+  "keywords": [
+    "ai",
+    "messengerbot",
+    "facebook",
+    "node"
+  ],
+  "author": "Richard Ni",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dxy159/RichardBot/issues"
+  },
+  "homepage": "https://github.com/dxy159/RichardBot#readme",
   "dependencies": {
-    "body-parser": "^1.15.0",
-    "express": "^4.13.4",
-    "node-wit": "^3.3.2",
-    "request": "^2.71.0"
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "request": "^2.79.0"
   }
 }
