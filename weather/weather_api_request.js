@@ -3,9 +3,7 @@ var http = require('http')
 const apiKey = "39a43cdb954cfc35441b3a3cdb3ff315"
 
 // Connect to API URL api.openweathermap.org/data/2.5/weather?q={city name}
-function accessWeather(city, callback) {
-	
-	var temperature = 2
+module.exports = function accessWeather(city, callback) {
 
 	var options = {
 		host: "api.openweathermap.org",
@@ -13,8 +11,9 @@ function accessWeather(city, callback) {
 		method: "GET"
 	}
 
+	var body = ""
+
 	var request = http.request(options, function(response) {
-		var body = ""
 
 		response.on('data', function(chunk) {
 			body += chunk.toString('utf8')
@@ -22,16 +21,11 @@ function accessWeather(city, callback) {
 		response.on('end', function() {
 
 			var json = JSON.parse(body)
-			temperature = parseInt(json["main"]["temp"] - 273)
+			var temperature = parseInt(json["main"]["temp"] - 273)
+			callback(temperature)
 		})
 	})
 	request.end()
-
-	return temperature
-}
-
-module.exports = {
-	accessWeather: accessWeather
 }
 
 
