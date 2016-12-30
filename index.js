@@ -50,7 +50,7 @@ app.post('/webhook/', function (req, res) {
         } else if (text.indexOf('Weather') >= 0) {
             var n = text.split(' ')
             var city = n[n.length - 1]
-            weather("Calgary", function(temp) {
+            weather(city, function(temp) {
                 sendTextMessage(sender, "The temperature is " + temp + " degrees.")
             })
         } else {
