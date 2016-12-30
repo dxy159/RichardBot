@@ -4,7 +4,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
-const weather = require('weather/weather_api_request.js')
+const weather = require('./weather/weather_api_request.js')
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -135,9 +135,6 @@ function sendGenericMessage(sender) {
     })
 }
 
-module.exports = {
-  sendTextMessage: sendTextMessage
-}
 
 
 

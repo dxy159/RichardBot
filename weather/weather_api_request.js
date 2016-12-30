@@ -34,7 +34,7 @@ accessWeather("SANFRANCISCO", function(weather) {
 	console.log(weather);
 })
 
-module.exports {
+module.exports = {
 	temperature:temperature
 }
 
