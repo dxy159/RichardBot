@@ -47,8 +47,10 @@ app.post('/webhook/', function (req, res) {
         }
         if (text === 'Hey its Colin') {
             sendTextMessage(sender, "Hi Colin you should switch into Software Engineering!!")
-        } else if (text === 'Weather') {
-            var temp = weather("Calgary", function(temp) {
+        } else if (text.includes('Weather')) {
+            var n = words.split(' ')
+            var city = n[n.length - 1]
+            weather("Calgary", function(temp) {
                 sendTextMessage(sender, "The temperature is " + temp + " degrees.")
             })
         } else {
