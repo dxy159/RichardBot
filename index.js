@@ -48,8 +48,8 @@ app.post('/webhook/', function (req, res) {
         if (text === 'Hey its Colin') {
             sendTextMessage(sender, "Hi Colin you should switch into Software Engineering!!")
         } else if (text === 'Weather') {
-            weather.accessWeather("Calgary")
-            sendTextMessage(sender, "The temperature is " + weather.temperature + " degrees.")
+            var temp = weather.accessWeather("Calgary")
+            sendTextMessage(sender, "The temperature is " + temp + " degrees.")
         } else {
             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
         }
