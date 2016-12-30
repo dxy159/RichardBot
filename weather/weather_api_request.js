@@ -5,7 +5,7 @@ const apiKey = "39a43cdb954cfc35441b3a3cdb3ff315"
 // Connect to API URL api.openweathermap.org/data/2.5/weather?q={city name}
 function accessWeather(city, callback) {
 	
-	var temperature = 0
+	var temperature = 2
 
 	var options = {
 		host: "api.openweathermap.org",
