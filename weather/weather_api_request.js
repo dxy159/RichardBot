@@ -35,6 +35,7 @@ accessWeather("SANFRANCISCO", function(weather) {
 })
 
 module.exports = {
+	accessWeather: accessWeather,
 	temperature:temperature
 }
 
