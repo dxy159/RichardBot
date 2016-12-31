@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 const weather = require('./weather/weather_api_request.js')
+const messages = require('./messages.js')
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -50,8 +51,9 @@ app.post('/webhook/', function (req, res) {
         } else if (text.indexOf('Weather') >= 0) {
             var n = text.split(' ')
             var city = n[n.length - 1]
-            weather(city, function(temp) {
-                sendTextMessage(sender, "The temperature is " + temp + " degrees.")
+            weather(city, function(temp, description) {
+                sendTextMessage(sender, "Here is the current weather in " + city + 
+                    "! The temperature is " + temp + "°C. Weather status: " + description + ".")
             })
         } else {
             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
@@ -138,6 +140,9 @@ function sendGenericMessage(sender) {
         }
     })
 }
+
+
+
 
 
 
