@@ -6,7 +6,7 @@ const request = require('request')
 const app = express()
 const weather = require('./weather/weather_api_request.js')
 const messages = require('./messages.js')
-const res = require('./responses.js')
+const r = require('./responses.js')
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -59,7 +59,7 @@ app.post('/webhook/', function (req, res) {
             })
         } else {
             // messages.sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
-            messages.sendTextMessage(sender, res.handleInput(text))
+            messages.sendTextMessage(sender, r.handleInput(text))
         }
       }
       if (event.postback) {
