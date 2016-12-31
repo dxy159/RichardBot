@@ -51,12 +51,11 @@ app.post('/webhook/', function (req, res) {
         } else if (text.indexOf('Weather') >= 0) {
             var n = text.split(' ')
             var city = n[n.length - 1]
-            // weather(city, function(temp, description) {
-            //     var msg = "Here is the current weather in " + city + 
-            //         "! The temperature is " + temp + "°C. Weather status: " + description + "."
-            //     sendTextMessage(sender, msg)
-            // })
-            sendTextMessage(sender, "Weather")
+            weather(city, function(temp, description) {
+                var msg = "Here is the current weather in " + city + 
+                    "! The temperature is " + temp + "°C. Weather status: " + description + "."
+                sendTextMessage(sender, msg)
+            })
         } else {
             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
         }
