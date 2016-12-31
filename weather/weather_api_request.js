@@ -23,9 +23,7 @@ module.exports = function accessWeather(city, callback) {
 			var json = JSON.parse(body)
 			var temperature = parseInt(json["main"]["temp"] - 273)
 			var description = json["weather"][0]["description"]
-			var icon = json["weather"]["icon"]
-			var iconURL = "http://openweathermap.org/img/w/" + icon + ".png"
-			callback(temperature, description, iconURL)
+			callback(temperature, description)
 		})
 	})
 	request.end()
