@@ -50,7 +50,8 @@ app.post('/webhook/', function (req, res) {
         if (text === 'Hey its Colin') {
             messages.sendTextMessage(sender, "Hi Colin you should switch into Software Engineering!!")
         } else if (r.editText(text) === "WEATHER") {
-            messages.sendTextMessage(sender, "Weather")
+            let weatherDescription = "It looks like you didn't specify a location! If you type in 'Weather' followed by a city name, ex.(Weather Calgary), RichardBot will provide you with your city's current location. OR you can just give me your location and I will do the rest!" 
+            messages.location_quick_replies(sender, weatherDescription)
         } else if (r.editText(text).indexOf('WEATHER') >= 0) {
             var n = text.split(' ')
             var city = n[n.length - 1]
