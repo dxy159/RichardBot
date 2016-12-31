@@ -1,5 +1,28 @@
 
 
+// Inject token as environmental variables
+const token = "EAAZA8BfowKQgBAAzXQsP71No5NzHbz1CutWQIlke2ZChYVYVOGZByBoL8lIpExlHV97UgsDMyziu7q4kqXPycUkIwU8eYgwNeRafkn7VoLrNabwxJSvQWoXupQ1SQtH5gE80il4UDgxsgDOWyDd6Ttzkfx8qOWjQZBPeORwFPgZDZD"
+
+// To echo back messages
+function sendTextMessage(sender, text) {
+    let messageData = { text:text }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
+
 // Send test message back as two cards
 function sendGenericMessage(sender) {
     let messageData = {
@@ -50,22 +73,8 @@ function sendGenericMessage(sender) {
     })
 }
 
-
-// Send weather specified by city
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+module.exports = {
+	sendTextMessage: sendTextMessage,
+	sendGenericMessage: sendGenericMessage
+}
 
