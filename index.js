@@ -48,7 +48,7 @@ app.post('/webhook/', function (req, res) {
             continue
         }
         if (text === 'Hey its Colin') {
-            sendTextMessage(sender, "Hi Colin you should switch into Software Engineering!!")
+            messages.sendTextMessage(sender, "Hi Colin you should switch into Software Engineering!!")
         } else if (text.indexOf('Weather') >= 0) {
             var n = text.split(' ')
             var city = n[n.length - 1]
@@ -58,8 +58,8 @@ app.post('/webhook/', function (req, res) {
                 messages.sendTextMessage(sender, msg)
             })
         } else {
-            messages.sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
-            // messages.sendTextMessage(sender, r.handleInput(text))
+            // messages.sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+            messages.sendTextMessage(sender, r.handleInput(text))
         }
       }
       if (event.postback) {
