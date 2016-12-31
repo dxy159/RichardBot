@@ -73,8 +73,45 @@ function sendGenericMessage(sender) {
     })
 }
 
+// Send quick replies (used for "WEATHER" command)
+function location_quick_replies(sender, text) {
+    let messageData = {
+        "text": text,
+        "quick_replies":[
+            {
+                "content_type": "location",
+            }
+        ]
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
+
 module.exports = {
 	sendTextMessage: sendTextMessage,
 	sendGenericMessage: sendGenericMessage
 }
+
+
+
+
+
+
+
+
+
+
 
