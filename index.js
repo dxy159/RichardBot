@@ -49,7 +49,9 @@ app.post('/webhook/', function (req, res) {
         }
         if (text === 'Hey its Colin') {
             messages.sendTextMessage(sender, "Hi Colin you should switch into Software Engineering!!")
-        } else if (text.indexOf('Weather') >= 0) {
+        } else if (r.editText(text) === "WEATHER") {
+            messages.sendTextMessage(sender, "Weather")
+        } else if (r.editText(text).indexOf('WEATHER') >= 0) {
             var n = text.split(' ')
             var city = n[n.length - 1]
             weather(city, function(temp, description) {

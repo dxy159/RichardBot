@@ -68,7 +68,8 @@ function handleInput(input) {
 
 
 module.exports = {
-	handleInput: handleInput
+	handleInput: handleInput,
+	editText: editText
 }
 
 
