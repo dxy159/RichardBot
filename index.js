@@ -52,8 +52,9 @@ app.post('/webhook/', function (req, res) {
             var n = text.split(' ')
             var city = n[n.length - 1]
             weather(city, function(temp, description) {
-                sendTextMessage(sender, "Here is the current weather in " + city + 
-                    "! The temperature is " + temp + "°C. Weather status: " + description + ".")
+                var msg = "Here is the current weather in " + city + 
+                    "! The temperature is " + temp + "°C. Weather status: " + description + "."
+                sendTextMessage(sender, msg)
             })
         } else {
             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
