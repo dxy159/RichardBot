@@ -40,11 +40,7 @@ function greeting() {
 function handleInput(input) {
 	text = editText(input)
 
-	if (text.indexOf('HI') >= 0 || text.indexOf('HEY') >= 0 || text.indexOf('SSUP') >= 0 || 
-		text.indexOf('YO') >= 0 || text.indexOf('HELLO') >= 0 || text.indexOf('HOWDY') >= 0 || 
-		text.indexOf('DDUP') >= 0) {
-		return greeting()
-	} else if (text.indexOf('BYE') >= 0) {
+	if (text.indexOf('BYE') >= 0) {
 		return responses['BYE']
 	} else if (text.indexOf('DICKLESSNI') >= 0) {
 		return responses['DICKLESSNI']
@@ -58,6 +54,10 @@ function handleInput(input) {
 		return responses['BESTSCHOOL']
 	} else if (text.indexOf('URMASTER') >= 0) {
 		return responses['URMASTER']
+	} else if ((text.indexOf('HI') >= 0 || text.indexOf('HEY') >= 0 || text.indexOf('SSUP') >= 0 || 
+		text.indexOf('YO') >= 0 || text.indexOf('HELLO') >= 0 || text.indexOf('HOWDY') >= 0 || 
+		text.indexOf('DDUP') >= 0)) {
+		return greeting()
 	} else if (text.indexOf('COOL') >= 0 || text.indexOf('GOOD') >= 0 || text.indexOf('WOW') >= 0 || 
 			   text.indexOf('NICE') >= 0 || text.indexOf('OK') >= 0) {
 		return responses['THUMBSUP']
