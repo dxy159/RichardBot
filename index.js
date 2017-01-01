@@ -73,6 +73,7 @@ app.post('/webhook/', function (req, res) {
       if (event.quick_reply) {
         let text = JSON.stringify(event.quick_reply)
         messages.sendTextMessage(sender, text)
+        continue
       }
     }
     res.sendStatus(200)
