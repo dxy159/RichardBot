@@ -72,10 +72,10 @@ app.post('/webhook/', function (req, res) {
         messages.sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
         continue
       }
-      if (event.quick_reply) {
-        let text = JSON.stringify(event.quick_reply)
-        messages.sendTextMessage(sender, text, token)
-        continue
+      let lat = event.message.attachments[0].payloads.coordinates.lat
+      let lng = event.message.attachments[0].payloads.coordinates.long
+      let text = "Latitude: " + lat ", Longitude: " + lng
+      messages.sendTextMessage(sender, text, token)
       }
     }
     res.sendStatus(200)
