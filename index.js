@@ -75,7 +75,7 @@ app.post('/webhook/', function (req, res) {
       if (event.quick_reply) {
         let lat = event.message.attachments[0].payloads.coordinates.lat
         let lng = event.message.attachments[0].payloads.coordinates.long
-        let text = "Latitude: " + lat ", Longitude: " + lng
+        let text = "Lat" + lat + "long" + lng
         messages.sendTextMessage(sender, text, token)
       }
     }
