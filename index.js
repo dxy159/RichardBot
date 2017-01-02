@@ -7,7 +7,6 @@ const app = express()
 const weather = require('./weather/weather_api_request.js')
 const messages = require('./messages.js')
 const r = require('./responses.js')
-const token = "EAAZA8BfowKQgBAAzXQsP71No5NzHbz1CutWQIlke2ZChYVYVOGZByBoL8lIpExlHV97UgsDMyziu7q4kqXPycUkIwU8eYgwNeRafkn7VoLrNabwxJSvQWoXupQ1SQtH5gE80il4UDgxsgDOWyDd6Ttzkfx8qOWjQZBPeORwFPgZDZD"
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -53,7 +52,6 @@ app.post('/webhook/', function (req, res) {
         } else if (r.editText(text) === "WEATHER") {
             let weatherDescription = "It looks like you didn't specify a location! If you type in 'Weather' followed by a city name, ex.(Weather Calgary), RichardBot will provide you with your city's current location. OR you can just give me your location and I will do the rest!" 
             messages.location_quick_replies(sender, weatherDescription)
-            continue
         } else if (r.editText(text).indexOf('WEATHER') >= 0) {
             var n = text.split(' ')
             var city = n[n.length - 1]
@@ -72,22 +70,11 @@ app.post('/webhook/', function (req, res) {
         messages.sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
         continue
       }
-      if (event.message.attachments[0].payloads.coordinates) {
-        let lat = event.message.attachments[0].payloads.coordinates.lat
-        let lng = event.message.attachments[0].payloads.coordinates.long
-        let text = "Lat" + lat + "long" + lng
-        messages.sendTextMessage(sender, text, token)
-        continue
+      if (event.quick_reply) {
+        let text = JSON.stringify(event.quick_reply)
+        messages.sendTextMessage(sender, text)
       }
     }
     res.sendStatus(200)
   })
-
-
-
-
-
-
-
-
 
