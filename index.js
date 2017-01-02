@@ -38,11 +38,17 @@ app.listen(app.get('port'), function() {
 // To post data
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
+    var location_weather = false
     for (let i = 0; i < messaging_events.length; i++) {
       let event = req.body.entry[0].messaging[i]
       let sender = event.sender.id
       if (event.message && event.message.text) {
         let text = event.message.text
+        if (location_weather) {
+          messages.sendTextMessage(sender, "location weather")
+          location_weather = false
+          continue
+        }
         if (text === 'Generic') {
             messages.sendGenericMessage(sender)
             continue
@@ -52,6 +58,8 @@ app.post('/webhook/', function (req, res) {
         } else if (r.editText(text) === "WEATHER") {
             let weatherDescription = "It looks like you didn't specify a location! If you type in 'Weather' followed by a city name, ex.(Weather Calgary), RichardBot will provide you with your city's current location. OR you can just give me your location and I will do the rest!" 
             messages.location_quick_replies(sender, weatherDescription)
+            location_weather = true
+            continue
         } else if (r.editText(text).indexOf('WEATHER') >= 0) {
             var n = text.split(' ')
             var city = n[n.length - 1]
