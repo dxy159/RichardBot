@@ -7,6 +7,7 @@ const app = express()
 const weather = require('./weather/weather_api_request.js')
 const messages = require('./messages.js')
 const r = require('./responses.js')
+const token = "EAAZA8BfowKQgBAAzXQsP71No5NzHbz1CutWQIlke2ZChYVYVOGZByBoL8lIpExlHV97UgsDMyziu7q4kqXPycUkIwU8eYgwNeRafkn7VoLrNabwxJSvQWoXupQ1SQtH5gE80il4UDgxsgDOWyDd6Ttzkfx8qOWjQZBPeORwFPgZDZD"
 
 app.set('port', (process.env.PORT || 5000))
 
