@@ -73,7 +73,7 @@ app.post('/webhook/', function (req, res) {
       }
       if (event.quick_reply) {
         let text = JSON.stringify(event.quick_reply)
-        messages.sendTextMessage(sender, text)
+        messages.sendTextMessage(sender, text, token)
         continue
       }
     }
