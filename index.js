@@ -64,7 +64,8 @@ app.post('/webhook/', function (req, res) {
             })
         } else {
             // messages.sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
-            messages.sendTextMessage(sender, r.handleInput(text))
+            // messages.sendTextMessage(sender, r.handleInput(text))
+            messages.sendTextMessage(sender, event)
         }
       }
       if (event.postback) {
