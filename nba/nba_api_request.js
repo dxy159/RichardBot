@@ -9,12 +9,12 @@ module.exports.games = function(callback) {
 			$ = cheerio.load(body)	
 
 			var num_games = $("div.schedule-list > div").length
-			console.log(num_games)
+			callback(num_games)
 		}
 	})
 }
 
-module.exports.stats = function(callback) {
+module.exports.stats = function(category, callback) {
 	const url = 'http://www.espn.com/nba/statistics'
 
 	request(url, function(err, response, body) {
@@ -24,14 +24,29 @@ module.exports.stats = function(callback) {
 			var $categories = $("#my-players-table")
 
 			// POINTS 
-			var $points = $("#my-players-table nth-child(1) nth-child(1)")
-			callback($points)
-			// var $westbrook = $($points + "tbody nth:child(2) a").text()
-			// callback($westbrook)
+			if (category == "POINTS") {
+				var $points = $categories.children().eq(0).children().eq(0)
+				// callback($points)
+				// var $westbrook = $($points + "tbody nth:child(2) a").text()
+				var pts = {}
+				var $first_pts = $points.children().eq(1).children().children().eq(1).children().eq(2).html()
+				var $first_name = $points.children().eq(1).children().children().eq(1).children().eq(0).children().eq(2).text()
+				pts["1."] = [$first_name, $first_pts]
+				for (var i = 2; i < 6; i++) {
+					var $ppg = $points.children().eq(1).children().children().eq(i).children().eq(1).html()
+					var $player_name = $points.children().eq(1).children().children().eq(i).children().eq(0).children('a').text()
+					pts[i + "."] = [$player_name ,$ppg]
+				}
+				callback(pts)
+			}
 		}
 	})
 }
 
-module.exports.stats(function(westbrook) {
-	console.log(westbrook)
-})
+// module.exports.games(function(game) {
+// 	console.log(game)
+// })
+
+// module.exports.stats("POINTS", function(x) {
+// 	console.log(x)
+// })

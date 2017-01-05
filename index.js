@@ -7,6 +7,7 @@ const app = express()
 const weather = require('./weather/weather_api_request.js')
 const messages = require('./messages.js')
 const r = require('./responses.js')
+const nba = require('./nba/nba_api_request.js')
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -53,8 +54,16 @@ app.post('/webhook/', function (req, res) {
             messages.sendGenericMessage(sender)
             continue
         }
-        if (text === 'Hey its Colin') {
-            messages.sendTextMessage(sender, "Hi Colin you should switch into Software Engineering!!")
+        if (r.editText(text) === "NBAPSTATSPOINTS") {
+            nba_points = nba.stats("POINTS", function(pts) {
+                return pts
+            })
+            for (var j = 1; j < 6; j++) {
+                var rank = j + "."
+                var player_name = nba_points[rank][0]
+                var ppg = nba_points[rank][1]
+                messages.sendTextMessage(sender, rank + " " + player_name + ", " + ppg)
+            }
         } else if (r.editText(text) === "WEATHER") {
             let weatherDescription = "It looks like you didn't specify a location! If you type in 'Weather' followed by a city name, ex.(Weather Calgary), RichardBot will provide you with your city's current location. OR you can just give me your location and I will do the rest!" 
             messages.location_quick_replies(sender, weatherDescription)
