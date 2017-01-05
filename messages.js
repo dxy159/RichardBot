@@ -185,7 +185,7 @@ module.exports = {
 	sendTextMessage: sendTextMessage,
 	sendGenericMessage: sendGenericMessage,
     location_quick_replies: location_quick_replies,
-    nba, nba,
+    nba: nba,
     nba_stats: nba_stats
 }
 
