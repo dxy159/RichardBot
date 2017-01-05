@@ -41,7 +41,7 @@ module.exports.stats = function(category, callback) {
 				callback(message)
 			}
 
-			//REBOUNDS
+			//ASSISTS
 			if (category == "ASSISTS") {
 				var $assists = $categories.children().eq(0).children().eq(1)
 
@@ -57,6 +57,23 @@ module.exports.stats = function(category, callback) {
 				}
 				callback(message)
 			}
+
+			//FG
+			if (category == "FG") {
+				var $fg = $categories.children().eq(0).children().eq(2)
+
+				var message = ""
+				var $first_fg = $fg.children().eq(0).children().children().eq(1).children().eq(2).html()
+				var $first_name = $fg.children().eq(0).children().children().eq(1).children().eq(0).children().eq(2).text()
+				message += "1. " + $first_name + ", " + $first_fg + "\n"
+				for (var i = 2; i < 6; i++) {
+					var $fgp = $fg.children().eq(0).children().children().eq(i).children().eq(1).html()
+					var $player_name = $fg.children().eq(0).children().children().eq(i).children().eq(0).children('a').text()
+					var add = i + ". " + $player_name + ", " + $fgp + "\n"
+					message += add
+				}
+				callback(message)
+			}
 		}
 	})
 }
@@ -64,8 +81,8 @@ module.exports.stats = function(category, callback) {
 // module.exports.games(function(game) {
 // 	console.log(game)
 // })
-// module.exports.stats("ASSISTS", function(msg) {
-// 	console.log(msg)
-// })
+module.exports.stats("FG", function(msg) {
+	console.log(msg)
+})
 
 
