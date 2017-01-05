@@ -50,6 +50,10 @@ app.post('/webhook/', function (req, res) {
           location_weather = false
           continue
         }
+        if (event.message.quick_reply) {
+            var status = JSON.stringify(event.message.quick_reply)
+            messages.sendTextMessage(sender, status)
+        }
         if (text === 'Generic') {
             messages.sendGenericMessage(sender)
             continue
@@ -80,7 +84,7 @@ app.post('/webhook/', function (req, res) {
                     messages.sendTextMessage(sender, "Steals per game: Season Leaders\n" + msg)
                 })
             } else {
-                let msg = "Please choose any of the following categories and I will tell you the top 5 season leaders."
+                let msg = "Please choose one of the following categories and I will tell you the top 5 season leaders."
                 messages.nba_stats(sender, msg)
             }
             continue
