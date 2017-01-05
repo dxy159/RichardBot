@@ -62,27 +62,27 @@ app.post('/webhook/', function (req, res) {
             if (r.editText(text).indexOf("NBASTATS") >= 0) {
                 if (r.editText(text).indexOf("POINT") >= 0 || r.editText(text).indexOf("PT") >= 0) {
                     nba.stats("POINTS", function(msg) {
-                        messages.sendTextMessage(sender, "Points per game: Season Leaders\n" + msg)
+                        messages.back(sender, "Points per game: Season Leaders\n" + msg)
                     })
                 } else if (r.editText(text).indexOf("ASSIST") >= 0) {
                     nba.stats("ASSISTS", function(msg) {
-                        messages.sendTextMessage(sender, "Assists per game: Season Leaders\n" + msg)
+                        messages.back(sender, "Assists per game: Season Leaders\n" + msg)
                     }) 
                 } else if (r.editText(text).indexOf("FIELDGOAL") >= 0 || r.editText(text).indexOf("FG") >= 0) {
                     nba.stats("FG", function(msg) {
-                        messages.sendTextMessage(sender, "Field goal % per game: Season Leaders\n" + msg)
+                        messages.back(sender, "Field goal % per game: Season Leaders\n" + msg)
                     })
                 } else if (r.editText(text).indexOf("REBOUND") >= 0 || r.editText(text).indexOf("REB") >= 0) {
                     nba.stats("REBOUNDS", function(msg) {
-                        messages.sendTextMessage(sender, "Rebounds per game: Season Leaders\n" + msg)
+                        messages.back(sender, "Rebounds per game: Season Leaders\n" + msg)
                     })
                 } else if (r.editText(text).indexOf("BLOCK") >= 0 || r.editText(text).indexOf("BLK") >= 0) {
                     nba.stats("BLOCKS", function(msg) {
-                        messages.sendTextMessage(sender, "Blocks per game: Season Leaders\n" + msg)
+                        messages.back(sender, "Blocks per game: Season Leaders\n" + msg)
                     })
                 } else if (r.editText(text).indexOf("STEAL") >= 0 || r.editText(text).indexOf("STL") >= 0) {
                     nba.stats("STEALS", function(msg) {
-                        messages.sendTextMessage(sender, "Steals per game: Season Leaders\n" + msg)
+                        messages.back(sender, "Steals per game: Season Leaders\n" + msg)
                     })
                 } else {
                     let msg = "Please choose one of the following categories and I will tell you the top 5 season leaders."

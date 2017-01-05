@@ -219,13 +219,42 @@ function nba_stats(sender, text) {
     })
 }
 
+function back(sender, text) {
+    let messageData = {
+        "text": text,
+        "quick_replies":[
+          {
+            "content_type":"text",
+            "title":"Back",
+            "payload":"NBASTATS"
+          }
+        ]
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
+
 module.exports = {
 	sendTextMessage: sendTextMessage,
 	sendGenericMessage: sendGenericMessage,
     location_quick_replies: location_quick_replies,
     help: help,
     nba: nba,
-    nba_stats: nba_stats
+    nba_stats: nba_stats,
+    back: back
 }
 
 
