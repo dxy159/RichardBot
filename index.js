@@ -91,7 +91,7 @@ app.post('/webhook/', function (req, res) {
                 continue
             } else {
                 let msg = "RichardBot can provide you with all different sorts of information about the NBA. Currently only the 'Stats' selection is available."
-                nba.nba(sender, msg)
+                messages.nba(sender, msg)
             }
         }
         else if (r.editText(text) === "WEATHER") {
