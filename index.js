@@ -54,37 +54,38 @@ app.post('/webhook/', function (req, res) {
             messages.sendGenericMessage(sender)
             continue
         }
-        if (r.editText(text).indexOf("NBASTATS") >= 0) {
-            if (r.editText(text).indexOf("POINT") >= 0 || r.editText(text).indexOf("PT") >= 0) {
-                nba.stats("POINTS", function(msg) {
-                    messages.sendTextMessage(sender, "Points per game: Season Leaders\n" + msg)
-                })
-            } else if (r.editText(text).indexOf("ASSIST") >= 0) {
-                nba.stats("ASSISTS", function(msg) {
-                    messages.sendTextMessage(sender, "Assists per game: Season Leaders\n" + msg)
-                }) 
-            } else if (r.editText(text).indexOf("FIELDGOAL") >= 0 || r.editText(text).indexOf("FG") >= 0) {
-                nba.stats("FG", function(msg) {
-                    messages.sendTextMessage(sender, "Field goal % per game: Season Leaders\n" + msg)
-                })
-            } else if (r.editText(text).indexOf("REBOUND") >= 0 || r.editText(text).indexOf("REB") >= 0) {
-                nba.stats("REBOUNDS", function(msg) {
-                    messages.sendTextMessage(sender, "Rebounds per game: Season Leaders\n" + msg)
-                })
-            } else if (r.editText(text).indexOf("BLOCK") >= 0 || r.editText(text).indexOf("BLK") >= 0) {
-                nba.stats("BLOCKS", function(msg) {
-                    messages.sendTextMessage(sender, "Blocks per game: Season Leaders\n" + msg)
-                })
-            } else if (r.editText(text).indexOf("STEAL") >= 0 || r.editText(text).indexOf("STL") >= 0) {
-                nba.stats("STEALS", function(msg) {
-                    messages.sendTextMessage(sender, "Steals per game: Season Leaders\n" + msg)
-                })
-            } else {
-                var msg = "Please choose any of the following categories and I will tell you the top 5 season leaders."
-                messages.nba_stats(sender, msg)
-            }
-            continue
-        } else if (r.editText(text) === "WEATHER") {
+        // if (r.editText(text).indexOf("NBASTATS") >= 0) {
+        //     if (r.editText(text).indexOf("POINT") >= 0 || r.editText(text).indexOf("PT") >= 0) {
+        //         nba.stats("POINTS", function(msg) {
+        //             messages.sendTextMessage(sender, "Points per game: Season Leaders\n" + msg)
+        //         })
+        //     } else if (r.editText(text).indexOf("ASSIST") >= 0) {
+        //         nba.stats("ASSISTS", function(msg) {
+        //             messages.sendTextMessage(sender, "Assists per game: Season Leaders\n" + msg)
+        //         }) 
+        //     } else if (r.editText(text).indexOf("FIELDGOAL") >= 0 || r.editText(text).indexOf("FG") >= 0) {
+        //         nba.stats("FG", function(msg) {
+        //             messages.sendTextMessage(sender, "Field goal % per game: Season Leaders\n" + msg)
+        //         })
+        //     } else if (r.editText(text).indexOf("REBOUND") >= 0 || r.editText(text).indexOf("REB") >= 0) {
+        //         nba.stats("REBOUNDS", function(msg) {
+        //             messages.sendTextMessage(sender, "Rebounds per game: Season Leaders\n" + msg)
+        //         })
+        //     } else if (r.editText(text).indexOf("BLOCK") >= 0 || r.editText(text).indexOf("BLK") >= 0) {
+        //         nba.stats("BLOCKS", function(msg) {
+        //             messages.sendTextMessage(sender, "Blocks per game: Season Leaders\n" + msg)
+        //         })
+        //     } else if (r.editText(text).indexOf("STEAL") >= 0 || r.editText(text).indexOf("STL") >= 0) {
+        //         nba.stats("STEALS", function(msg) {
+        //             messages.sendTextMessage(sender, "Steals per game: Season Leaders\n" + msg)
+        //         })
+        //     } else {
+        //         let msg = "Please choose any of the following categories and I will tell you the top 5 season leaders."
+        //         messages.nba_stats(sender, msg)
+        //     }
+        //     continue
+        // } 
+        else if (r.editText(text) === "WEATHER") {
             let weatherDescription = "It looks like you didn't specify a location! If you type in 'Weather' followed by a city name, ex.(Weather Calgary), RichardBot will provide you with your city's current location. OR you can just give me your location and I will do the rest!" 
             messages.location_quick_replies(sender, weatherDescription)
             location_weather = true
