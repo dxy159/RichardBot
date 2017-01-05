@@ -79,6 +79,9 @@ app.post('/webhook/', function (req, res) {
                 nba.stats("STEALS", function(msg) {
                     messages.sendTextMessage(sender, "Steals per game: Season Leaders\n" + msg)
                 })
+            } else {
+                msg = "Please choose any of the following categories and I could tell you the top 5 season leaders."
+                messages.nba_stats(sender, msg)
             }
         } else if (r.editText(text) === "WEATHER") {
             let weatherDescription = "It looks like you didn't specify a location! If you type in 'Weather' followed by a city name, ex.(Weather Calgary), RichardBot will provide you with your city's current location. OR you can just give me your location and I will do the rest!" 

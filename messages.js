@@ -100,10 +100,49 @@ function location_quick_replies(sender, text) {
     })
 }
 
+function nba_stats(sender, text) {
+    let messageData = {
+        "text": text,
+        "quick_replies":[
+          {
+            "content_type":"text",
+            "title":"Points",
+            "payload":"NBASTATSPOINTS"
+          },
+          {
+            "content_type":"text",
+            "title":"Rebounds",
+            "payload":"NBASTATSREBOUNDS"
+          },
+          {
+            "content_type":"text",
+            "title":"Assists",
+            "payload":"NBASTATSASSISTS"
+          },
+          {
+            "content_type":"text",
+            "title":"Steals",
+            "payload":"NBASTATSSTEALS"
+          },
+          {
+            "content_type":"text",
+            "title":"Blocks",
+            "payload":"NBASTATSBLOCKS"
+          },
+          {
+            "content_type":"text",
+            "title":"FG%",
+            "payload":"NBASTATSFG"
+          }
+        ]
+    }
+}
+
 module.exports = {
 	sendTextMessage: sendTextMessage,
 	sendGenericMessage: sendGenericMessage,
     location_quick_replies: location_quick_replies
+    nba_stats: nba_stats
 }
 
 
