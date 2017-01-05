@@ -55,16 +55,28 @@ app.post('/webhook/', function (req, res) {
             continue
         }
         if (r.editText(text).indexOf("NBASTATS") >= 0) {
-            if (r.editText(text).indexOf("POINTS") >= 0) {
+            if (r.editText(text).indexOf("POINT") >= 0 || r.editText(text).indexOf("PT") >= 0) {
                 nba.stats("POINTS", function(msg) {
                     messages.sendTextMessage(sender, "Points per game: Season Leaders\n" + msg)
                 })
-            } else if (r.editText(text).indexOf("ASSISTS") >= 0) {
+            } else if (r.editText(text).indexOf("ASSIST") >= 0 || r.editText(text).indexOf("AST") >= 0) {
                 nba.stats("ASSISTS", function(msg) {
                     messages.sendTextMessage(sender, "Assists per game: Season Leaders\n" + msg)
                 }) 
             } else if (r.editText(text).indexOf("FIELDGOAL") >= 0 || r.editText(text).indexOf("FG") >= 0) {
                 nba.stats("FG", function(msg) {
+                    messages.sendTextMessage(sender, "Field goal % per game: Season Leaders\n" + msg)
+                })
+            } else if (r.editText(text).indexOf("REBOUND") >= 0 || r.editText(text).indexOf("REB") >= 0) {
+                nba.stats("REBOUNDS", function(msg) {
+                    messages.sendTextMessage(sender, "Field goal % per game: Season Leaders\n" + msg)
+                })
+            } else if (r.editText(text).indexOf("BLOCK") >= 0 || r.editText(text).indexOf("BLK") >= 0) {
+                nba.stats("BLOCKS", function(msg) {
+                    messages.sendTextMessage(sender, "Field goal % per game: Season Leaders\n" + msg)
+                })
+            } else if (r.editText(text).indexOf("STEAL") >= 0 || r.editText(text).indexOf("STL") >= 0) {
+                nba.stats("STEALS", function(msg) {
                     messages.sendTextMessage(sender, "Field goal % per game: Season Leaders\n" + msg)
                 })
             }

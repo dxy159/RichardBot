@@ -41,6 +41,24 @@ module.exports.stats = function(category, callback) {
 				callback(message)
 			}
 
+			// REBOUNDS 
+			if (category == "REBOUNDS") {
+				var $rebounds = $categories.children().eq(1).children().eq(0)
+				// callback($points)
+				// var $westbrook = $($points + "tbody nth:child(2) a").text()
+				var message = ""
+				var $first_rbs = $rebounds.children().eq(1).children().children().eq(1).children().eq(2).html()
+				var $first_name = $rebounds.children().eq(1).children().children().eq(1).children().eq(0).children().eq(2).text()
+				message += "1. " + $first_name + ", " + $first_rbs + "\n"
+				for (var i = 2; i < 6; i++) {
+					var $rpg = $rebounds.children().eq(1).children().children().eq(i).children().eq(1).html()
+					var $player_name = $rebounds.children().eq(1).children().children().eq(i).children().eq(0).children('a').text()
+					var add = i + ". " + $player_name + ", " + $rpg + "\n"
+					message += add
+				}
+				callback(message)
+			}
+
 			//ASSISTS
 			if (category == "ASSISTS") {
 				var $assists = $categories.children().eq(0).children().eq(1)
@@ -74,6 +92,40 @@ module.exports.stats = function(category, callback) {
 				}
 				callback(message)
 			}
+
+			//BLOCKS
+			if (category == "BLOCKS") {
+				var $blocks = $categories.children().eq(1).children().eq(1)
+
+				var message = ""
+				var $first_blk = $blocks.children().eq(0).children().children().eq(1).children().eq(2).html()
+				var $first_name = $blocks.children().eq(0).children().children().eq(1).children().eq(0).children().eq(2).text()
+				message += "1. " + $first_name + ", " + $first_blk + "\n"
+				for (var i = 2; i < 6; i++) {
+					var $bpg = $blocks.children().eq(0).children().children().eq(i).children().eq(1).html()
+					var $player_name = $blocks.children().eq(0).children().children().eq(i).children().eq(0).children('a').text()
+					var add = i + ". " + $player_name + ", " + $bpg + "\n"
+					message += add
+				}
+				callback(message)
+			}
+
+			//STEALS
+			if (category == "STEALS") {
+				var $steals = $categories.children().eq(1).children().eq(2)
+
+				var message = ""
+				var $first_stl = $steals.children().eq(0).children().children().eq(1).children().eq(2).html()
+				var $first_name = $steals.children().eq(0).children().children().eq(1).children().eq(0).children().eq(2).text()
+				message += "1. " + $first_name + ", " + $first_stl + "\n"
+				for (var i = 2; i < 6; i++) {
+					var $spg = $steals.children().eq(0).children().children().eq(i).children().eq(1).html()
+					var $player_name = $steals.children().eq(0).children().children().eq(i).children().eq(0).children('a').text()
+					var add = i + ". " + $player_name + ", " + $spg + "\n"
+					message += add
+				}
+				callback(message)
+			}
 		}
 	})
 }
@@ -81,7 +133,7 @@ module.exports.stats = function(category, callback) {
 // module.exports.games(function(game) {
 // 	console.log(game)
 // })
-// module.exports.stats("FG", function(msg) {
+// module.exports.stats("STEALS", function(msg) {
 // 	console.log(msg)
 // })
 
