@@ -55,11 +55,11 @@ app.post('/webhook/', function (req, res) {
             continue
         }
         if (r.editText(text).indexOf("NBASTATS") >= 0) {
-            if (r.editText.indexOf("POINTS") >= 0) {
+            if (r.editText(text).indexOf("POINTS") >= 0) {
                 nba.stats("POINTS", function(msg) {
                     messages.sendTextMessage(sender, "Points per game: Season Leaders\n" + msg)
                 })
-            } else if (r.editText.indexOf("ASSISTS") >= 0) {
+            } else if (r.editText(text).indexOf("ASSISTS") >= 0) {
                 nba.stats("ASSISTS", function(msg) {
                     messages.sendTextMessage(sender, "Assists per game: Season Leaders\n" + msg)
                 })
