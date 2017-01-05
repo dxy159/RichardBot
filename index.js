@@ -93,6 +93,7 @@ app.post('/webhook/', function (req, res) {
                 let msg = "RichardBot can provide you with all different sorts of information about the NBA. Currently only the 'Stats' selection is available."
                 messages.nba(sender, msg)
             }
+            continue
         }
         else if (r.editText(text) === "WEATHER") {
             let weatherDescription = "It looks like you didn't specify a location! If you type in 'Weather' followed by a city name, ex.(Weather Calgary), RichardBot will provide you with your city's current location. OR you can just give me your location and I will do the rest!" 
@@ -107,6 +108,10 @@ app.post('/webhook/', function (req, res) {
                     "! The temperature is " + temp + "°C. Weather status: " + description + "."
                 messages.sendTextMessage(sender, msg)
             })
+        } else if (r.editText(text).indexOf('HELP') >= 0) {
+            let msg = "RichardBot is programmed to have many cool features. Currently I can provide you with the weather in any city in the world along with awesome NBA information! Or you just simply say hi! :D"
+            messages.help(sender, msg)
+            continue
         } else {
             // messages.sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
             messages.sendTextMessage(sender, r.handleInput(text))

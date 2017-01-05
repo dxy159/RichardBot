@@ -100,6 +100,44 @@ function location_quick_replies(sender, text) {
     })
 }
 
+function help(sender, text) {
+    let messageData = {
+        "text": text,
+        "quick_replies":[
+          {
+            "content_type":"text",
+            "title":"NBA",
+            "payload":"NBA"
+          },
+          {
+            "content_type":"text",
+            "title":"Weather",
+            "payload":"WEATHER"
+          },
+          {
+            "content_type":"text",
+            "title":"Hey RichardBot!",
+            "payload":"HEY"
+          }
+        ]
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
+
 function nba(sender, text) {
     let messageData = {
         "text": text,
@@ -185,6 +223,7 @@ module.exports = {
 	sendTextMessage: sendTextMessage,
 	sendGenericMessage: sendGenericMessage,
     location_quick_replies: location_quick_replies,
+    help: help,
     nba: nba,
     nba_stats: nba_stats
 }
