@@ -141,7 +141,7 @@ function nba_stats(sender, text) {
 module.exports = {
 	sendTextMessage: sendTextMessage,
 	sendGenericMessage: sendGenericMessage,
-    location_quick_replies: location_quick_replies
+    location_quick_replies: location_quick_replies,
     nba_stats: nba_stats
 }
 
