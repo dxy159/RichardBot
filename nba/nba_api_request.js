@@ -14,7 +14,7 @@ module.exports.games = function(callback) {
 	})
 }
 
-module.exports.stats = function(category, callback) {
+module.exports.stats = function(category) {
 	const url = 'http://www.espn.com/nba/statistics'
 
 	request(url, function(err, response, body) {
@@ -37,7 +37,7 @@ module.exports.stats = function(category, callback) {
 					var $player_name = $points.children().eq(1).children().children().eq(i).children().eq(0).children('a').text()
 					pts[i + "."] = [$player_name ,$ppg]
 				}
-				callback(pts)
+				return pts
 			}
 		}
 	})
@@ -47,6 +47,22 @@ module.exports.stats = function(category, callback) {
 // 	console.log(game)
 // })
 
-// module.exports.stats("POINTS", function(x) {
-// 	console.log(x)
-// })
+
+nba_points = module.exports.stats("POINTS")
+
+console.log(nba_points)
+// for (var j = 1; j < 6; j++) {
+//     var rank = j + "."
+//     var player_name = nba_points[rank][0]
+//     var ppg = nba_points[rank][1]
+//     console.log(rank)
+//     console.log(player_name)
+//     console.log(ppg)
+//     // messages.sendTextMessage(sender, rank + " " + player_name + ", " + ppg)
+// }
+
+
+
+
+
+
