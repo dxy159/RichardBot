@@ -14,7 +14,7 @@ module.exports.games = function(callback) {
 	})
 }
 
-module.exports.stats = function(category) {
+module.exports.stats = function(category, callback) {
 	const url = 'http://www.espn.com/nba/statistics'
 
 	request(url, function(err, response, body) {
@@ -28,16 +28,17 @@ module.exports.stats = function(category) {
 				var $points = $categories.children().eq(0).children().eq(0)
 				// callback($points)
 				// var $westbrook = $($points + "tbody nth:child(2) a").text()
-				var pts = {}
+				var message = ""
 				var $first_pts = $points.children().eq(1).children().children().eq(1).children().eq(2).html()
 				var $first_name = $points.children().eq(1).children().children().eq(1).children().eq(0).children().eq(2).text()
-				pts["1."] = [$first_name, $first_pts]
+				message += "1. " + $first_name + ", " + $first_pts + "\n"
 				for (var i = 2; i < 6; i++) {
 					var $ppg = $points.children().eq(1).children().children().eq(i).children().eq(1).html()
 					var $player_name = $points.children().eq(1).children().children().eq(i).children().eq(0).children('a').text()
-					pts[i + "."] = [$player_name ,$ppg]
+					var add = i + ". " + $player_name + ", " + $ppg + "\n"
+					message += add
 				}
-				return pts
+				callback(message)
 			}
 		}
 	})
@@ -46,23 +47,8 @@ module.exports.stats = function(category) {
 // module.exports.games(function(game) {
 // 	console.log(game)
 // })
-
-
-nba_points = module.exports.stats("POINTS")
-
-console.log(nba_points)
-// for (var j = 1; j < 6; j++) {
-//     var rank = j + "."
-//     var player_name = nba_points[rank][0]
-//     var ppg = nba_points[rank][1]
-//     console.log(rank)
-//     console.log(player_name)
-//     console.log(ppg)
-//     // messages.sendTextMessage(sender, rank + " " + player_name + ", " + ppg)
-// }
-
-
-
-
+// module.exports.stats("POINTS", function(msg) {
+// 	console.log(msg)
+// })
 
 
