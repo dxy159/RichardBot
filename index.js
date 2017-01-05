@@ -44,15 +44,15 @@ app.post('/webhook/', function (req, res) {
       let event = req.body.entry[0].messaging[i]
       let sender = event.sender.id
       if (event.message && event.message.text) {
-        let text = event.message.text
+        var text = event.message.text
         if (location_weather) {
           messages.sendTextMessage(sender, "location weather")
           location_weather = false
           continue
         }
         if (event.message.quick_reply) {
-            var status = JSON.stringify(event.message.quick_reply)
-            messages.sendTextMessage(sender, status)
+            var status = JSON.stringify(event.message.quick_reply.payload)
+            text = status
         }
         if (text === 'Generic') {
             messages.sendGenericMessage(sender)
