@@ -79,7 +79,7 @@ app.post('/webhook/', function (req, res) {
                 nba.stats("STEALS", function(msg) {
                     messages.sendTextMessage(sender, "Steals per game: Season Leaders\n" + msg)
                 })
-            } else {
+            } else if (r.editText(text) === "NBASTATS") {
                 msg = "Please choose any of the following categories and I will tell you the top 5 season leaders."
                 messages.nba_stats(sender, msg)
             }
