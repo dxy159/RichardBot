@@ -114,26 +114,26 @@ function nba_stats(sender, text) {
             "title":"Rebounds",
             "payload":"NBASTATSREBOUNDS"
           },
-          {
-            "content_type":"text",
-            "title":"Assists",
-            "payload":"NBASTATSASSISTS"
-          },
-          {
-            "content_type":"text",
-            "title":"Steals",
-            "payload":"NBASTATSSTEALS"
-          },
-          {
-            "content_type":"text",
-            "title":"Blocks",
-            "payload":"NBASTATSBLOCKS"
-          },
-          {
-            "content_type":"text",
-            "title":"FG%",
-            "payload":"NBASTATSFG"
-          }
+          // {
+          //   "content_type":"text",
+          //   "title":"Assists",
+          //   "payload":"NBASTATSASSISTS"
+          // },
+          // {
+          //   "content_type":"text",
+          //   "title":"Steals",
+          //   "payload":"NBASTATSSTEALS"
+          // },
+          // {
+          //   "content_type":"text",
+          //   "title":"Blocks",
+          //   "payload":"NBASTATSBLOCKS"
+          // },
+          // {
+          //   "content_type":"text",
+          //   "title":"FG%",
+          //   "payload":"NBASTATSFG"
+          // }
         ]
     }
     request({
