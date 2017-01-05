@@ -81,8 +81,8 @@ module.exports.stats = function(category, callback) {
 // module.exports.games(function(game) {
 // 	console.log(game)
 // })
-module.exports.stats("FG", function(msg) {
-	console.log(msg)
-})
+// module.exports.stats("FG", function(msg) {
+// 	console.log(msg)
+// })
 
 
