@@ -225,7 +225,7 @@ function back(sender, text) {
         "quick_replies":[
           {
             "content_type":"text",
-            "title":"Back",
+            "title":"Stats",
             "payload":"NBASTATS"
           }
         ]
