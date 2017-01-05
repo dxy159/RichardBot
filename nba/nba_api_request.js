@@ -40,6 +40,23 @@ module.exports.stats = function(category, callback) {
 				}
 				callback(message)
 			}
+
+			//REBOUNDS
+			if (category == "ASSISTS") {
+				var $assists = $categories.children().eq(0).children().eq(1)
+
+				var message = ""
+				var $first_ast = $assists.children().eq(0).children().children().eq(1).children().eq(2).html()
+				var $first_name = $assists.children().eq(0).children().children().eq(1).children().eq(0).children().eq(2).text()
+				message += "1. " + $first_name + ", " + $first_ast + "\n"
+				for (var i = 2; i < 6; i++) {
+					var $apg = $assists.children().eq(0).children().children().eq(i).children().eq(1).html()
+					var $player_name = $assists.children().eq(0).children().children().eq(i).children().eq(0).children('a').text()
+					var add = i + ". " + $player_name + ", " + $apg + "\n"
+					message += add
+				}
+				callback(message)
+			}
 		}
 	})
 }
@@ -47,8 +64,8 @@ module.exports.stats = function(category, callback) {
 // module.exports.games(function(game) {
 // 	console.log(game)
 // })
-// module.exports.stats("POINTS", function(msg) {
-// 	console.log(msg)
-// })
+module.exports.stats("ASSISTS", function(msg) {
+	console.log(msg)
+})
 
 

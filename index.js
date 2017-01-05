@@ -54,10 +54,16 @@ app.post('/webhook/', function (req, res) {
             messages.sendGenericMessage(sender)
             continue
         }
-        if (r.editText(text) === "NBASTATSPOINTS") {
-            nba.stats("POINTS", function(msg) {
-                messages.sendTextMessage(sender, "Points per game: Season Leaders\n" + msg)
-            })
+        if (r.editText(text).indexOf("NBASTATS") >= 0) {
+            if (r.editText.indexOf("POINTS") >= 0) {
+                nba.stats("POINTS", function(msg) {
+                    messages.sendTextMessage(sender, "Points per game: Season Leaders\n" + msg)
+                })
+            } else if (r.editText.indexOf("ASSISTS") >= 0) {
+                nba.stats("ASSISTS", function(msg) {
+                    messages.sendTextMessage(sender, "Assists per game: Season Leaders\n" + msg)
+                })
+            }
         } else if (r.editText(text) === "WEATHER") {
             let weatherDescription = "It looks like you didn't specify a location! If you type in 'Weather' followed by a city name, ex.(Weather Calgary), RichardBot will provide you with your city's current location. OR you can just give me your location and I will do the rest!" 
             messages.location_quick_replies(sender, weatherDescription)
