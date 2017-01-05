@@ -18,7 +18,7 @@ responses = {
 	"URMASTER": "My master's name is Richard Ni. He created me from the grains of stardust. Here is his profile: \n https://www.facebook.com/richard.ni.9",
 	"THUMBSUP": "(Y)",
 	"BESTSCHOOL": "Obviously McGill University?? Duh!",
-	"OTHER": "Hmm.. I didn't quite get that."
+	"OTHER": "Hmm.. I didn't quite get that. Ask me for 'help'"
 }
 
 // Function to handle greetings
@@ -32,6 +32,17 @@ function greeting() {
 		case 4: return "Yoyoyo. RichardBot at your service!"
 		case 5: return "Howdy partner :P."
 		case 6: return "Hi there! How are you today?"
+		default: return ""
+	}
+}
+
+function gratitude() {
+	let random = Math.floor((Math.random() * 3) + 1) 
+
+	switch (random) {
+		case 1: return "Your wish is my command!"
+		case 2: return "Don't thank me, thank technology!"
+		case 3: return "RichardBot is always at your service!"
 		default: return ""
 	}
 }
@@ -54,6 +65,8 @@ function handleInput(input) {
 		return responses['BESTSCHOOL']
 	} else if (text.indexOf('URMASTER') >= 0) {
 		return responses['URMASTER']
+	} else if (text.indexOf('TY') >= 0 || text.indexOf('THANK') >= 0 || text.indexOf('THX') >= 0) {
+		return gratitude()
 	} else if ((text.indexOf('HI') >= 0 || text.indexOf('HEY') >= 0 || text.indexOf('SSUP') >= 0 || 
 		text.indexOf('YO') >= 0 || text.indexOf('HELLO') >= 0 || text.indexOf('HOWDY') >= 0 || 
 		text.indexOf('DDUP') >= 0)) {
