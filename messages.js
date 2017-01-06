@@ -146,6 +146,11 @@ function nba(sender, text) {
             "content_type":"text",
             "title":"Stats",
             "payload":"NBASTATS"
+          },
+          {
+            "content_type":"text",
+            "title":"Games",
+            "payload":"NBAGAMES"
           }
         ]
     }
