@@ -1,6 +1,6 @@
 const request = require('request')
 const cheerio = require('cheerio')
-const teams = require('./games')
+const teams = require('./teams')
 
 module.exports.games = function(callback) {
 	const url = 'http://www.cbssports.com/nba/schedules'
