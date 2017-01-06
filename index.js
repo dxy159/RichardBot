@@ -89,6 +89,10 @@ app.post('/webhook/', function (req, res) {
                     messages.nba_stats(sender, msg)
                 }
                 continue
+            } else if (r.editText(text).indexOf("NBAGAMES") >= 0) {
+                nba.games(function(msg) {
+                    messages.sendTextMessage(sender, "Here are the games for today!\n" + msg)
+                })
             } else {
                 let msg = "RichardBot can provide you with all different sorts of information about the NBA. Currently only the 'Stats' selection is available."
                 messages.nba(sender, msg)

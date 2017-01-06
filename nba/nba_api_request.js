@@ -2,22 +2,31 @@ const request = require('request')
 const cheerio = require('cheerio')
 
 module.exports.games = function(callback) {
-	const url = 'https://watch.nba.com'
+	const url = 'http://www.espn.com/nba/schedule'
 
 	request(url, function(err, response, body) {
 		if (!err && response.statusCode === 200) {
 			$ = cheerio.load(body)	
 
-			var $schedule = $(".game-container").children().eq(2).children().children()
-			var $game_one = $schedule.children().eq(0)
-			callback($schedule)
+			var $schedule = $("#sched-container").children().eq(2).children().children().eq(1)
+			var $num_games = $schedule.children().length
+
+			var msg_all_games = ""
+			for (var i = 1; i < $num_games + 1; i++) {
+				var $game = $schedule.children().eq(i - 1)
+				var $away = $game.children().eq(0).children().eq(1).children('span').html()
+				var $home = $game.children().eq(1).children().eq(1).children('span').html()
+				var add = i + ". " + $away + " at " + $home + "\n"
+				msg_all_games += add 
+			}
+			callback(msg_all_games)
 		}
 	})
 }
 
-module.exports.games(function(sched) {
-	console.log(sched)
-})
+// module.exports.games(function(sched) {
+// 	console.log(sched)
+// })
 
 module.exports.stats = function(category, callback) {
 	const url = 'http://www.espn.com/nba/statistics'
