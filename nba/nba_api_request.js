@@ -1,8 +1,9 @@
 const request = require('request')
 const cheerio = require('cheerio')
+const teams = require('./games')
 
 module.exports.games = function(callback) {
-	const url = 'http://www.espn.com/nba/schedule'
+	const url = 'http://www.cbssports.com/nba/schedules'
 
 	request(url, function(err, response, body) {
 		if (!err && response.statusCode === 200) {
@@ -16,7 +17,7 @@ module.exports.games = function(callback) {
 				var $game = $schedule.children().eq(i - 1)
 				var $away = $game.children().eq(0).children().eq(1).children('span').html()
 				var $home = $game.children().eq(1).children().eq(1).children('span').html()
-				var add = i + ". " + $away + " at " + $home + "\n"
+				var add = i + ". " + teams.teams[$away] + " at " + teams.teams[$home] + "\n"
 				msg_all_games += add 
 			}
 			callback(msg_all_games)
