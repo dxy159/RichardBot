@@ -31,6 +31,10 @@ const teams = {
 	"Phoenix": "Phoenix Suns"
 }
 
+function get_teams(team) {
+	return teams[team]
+}
+
 module.exports = {
-	teams: teams
+	get_teams: get_teams
 }
