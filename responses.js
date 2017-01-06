@@ -65,6 +65,8 @@ function handleInput(input) {
 		return responses['BESTSCHOOL']
 	} else if (text.indexOf('URMASTER') >= 0) {
 		return responses['URMASTER']
+	} else if (text.indexOf('HOWAREYOU') >= 0 || text.indexOf('HBY') >= 0 || text.indexOf('HBU') >= 0) {
+		return responses['HOWAREYOU']
 	} else if (text.indexOf('TY') >= 0 || text.indexOf('THANK') >= 0 || text.indexOf('THX') >= 0) {
 		return gratitude()
 	} else if ((text.indexOf('HI') >= 0 || text.indexOf('HEY') >= 0 || text.indexOf('SSUP') >= 0 || 

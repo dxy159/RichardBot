@@ -8,11 +8,16 @@ module.exports.games = function(callback) {
 		if (!err && response.statusCode === 200) {
 			$ = cheerio.load(body)	
 
-			var num_games = $("div.schedule-list > div").length
-			callback(num_games)
+			var $schedule = $(".game-container").children().eq(2).children().children()
+			var $game_one = $schedule.children().eq(0)
+			callback($schedule)
 		}
 	})
 }
+
+module.exports.games(function(sched) {
+	console.log(sched)
+})
 
 module.exports.stats = function(category, callback) {
 	const url = 'http://www.espn.com/nba/statistics'
