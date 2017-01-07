@@ -47,6 +47,9 @@ app.post('/webhook/', function (req, res) {
 
         if (event.message.quick_reply) {
             var status = JSON.stringify(event.message.quick_reply.payload)
+            if (status == "WEATHER") {
+                messages.sendTextMessage(sender, "Welcome to RichardBot's awesome and handy weather feature. Type in 'Weather' followed by any city name and I will provide you with that location's weather information! For example, 'Weather Calgary' will allow me to give you Calgary's current weather information.")
+            }
             text = status
         }
         if (text === 'Generic') {
