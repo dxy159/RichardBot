@@ -112,7 +112,7 @@ function help(sender, text) {
           {
             "content_type":"text",
             "title":"Weather",
-            "payload":"WEATHER"
+            "payload":"Welcome to RichardBot's awesome and handy weather feature. Type in 'Weather' followed by any city name and I will provide you with that location's weather information! For example, 'Weather Calgary' will allow me to give you Calgary's current weather information."
           },
           {
             "content_type":"text",
