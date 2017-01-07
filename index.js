@@ -107,7 +107,7 @@ app.post('/webhook/', function (req, res) {
             continue
         }
         else if (r.editText(text) === "WEATHER") {
-            let weatherDescription = "Welcome to RichardBot's awesome and handy weather feature. Type in 'Weather' followed by any city name and I will provide you with that location's weather information! For example, 'Weather Calgary' will allow me to give you Calgary's current weather information. For now sending your location will not work, but be I will keep you updated on this problem!" 
+            let weatherDescription = "Welcome to RichardBot's awesome and handy weather feature. Type in 'Weather' followed by any city name and I will provide you with that location's weather information! For example, 'Weather Calgary' will allow me to give you Calgary's current weather information. For now sending your location will not work due to a technical issue, but be I will keep you updated if this problem is resolved!" 
             messages.location_quick_replies(sender, weatherDescription)
             continue
         } else if (r.editText(text).indexOf('WEATHER') >= 0) {
