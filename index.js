@@ -47,10 +47,6 @@ app.post('/webhook/', function (req, res) {
 
         if (event.message.quick_reply) {
             var status = JSON.stringify(event.message.quick_reply.payload)
-            if (status == "WEATHER") {
-                messages.sendTextMessage(sender, "Welcome to RichardBot's awesome and handy weather feature. Type in 'Weather' followed by any city name and I will provide you with that location's weather information! For example, 'Weather Calgary' will allow me to give you Calgary's current weather information.")
-                continue
-            }
             text = status
         }
         if (text === 'Generic') {
@@ -111,7 +107,7 @@ app.post('/webhook/', function (req, res) {
             continue
         }
         else if (r.editText(text) === "WEATHER") {
-            let weatherDescription = "It looks like you didn't specify a location! If you type in 'Weather' followed by a city name, ex.(Weather Calgary), RichardBot will provide you with your city's current location. OR you can just give me your location and I will do the rest!" 
+            let weatherDescription = "Welcome to RichardBot's awesome and handy weather feature. Type in 'Weather' followed by any city name and I will provide you with that location's weather information! For example, 'Weather Calgary' will allow me to give you Calgary's current weather information. For now sending your location will not work, but be I will keep you updated on this problem!" 
             messages.location_quick_replies(sender, weatherDescription)
             continue
         } else if (r.editText(text).indexOf('WEATHER') >= 0) {
