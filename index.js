@@ -120,7 +120,8 @@ app.post('/webhook/', function (req, res) {
             weather(city, function(temp, description) {
                 var msg = "Here is the current weather in " + city + 
                     "! The temperature is " + temp + "°C. Weather status: " + description + "."
-                messages.sendTextMessage(sender, msg)
+                // messages.sendTextMessage(sender, msg)
+                messages.sendTextMessage(sender, text)
             })
         } else if (r.editText(text).indexOf('HELP') >= 0) {
             let msg = "RichardBot is programmed to have many cool features. Currently I can provide you with the weather in any city in the world along with awesome NBA information! Or you just simply say hi! :D"
