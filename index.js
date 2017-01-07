@@ -93,6 +93,18 @@ app.post('/webhook/', function (req, res) {
                 nba.games(function(msg) {
                     messages.sendTextMessage(sender, "Here are the games for today!\n\n" + msg)
                 })
+            } else if (r.editText(text).indexOf("NBASTANDINGS") >= 0) {
+                if (r.editText(text).indexOf("EAST") >= 0) {
+                    nba.standings("EASTERN", function(msg) {
+                        messages.sendTextMessage(sender, "Current Standings in the Eastern Conference:\n\n" + msg)
+                    })
+                } else if (r.editText(text).indexOf("WEST") >= 0) {
+                    nba.standings("WESTERN", function(msg) {
+                        messages.sendTextMessage(sender, "Current Standings in the Western Conference:\n\n" + msg)
+                    })
+                } else {
+                    messages.sendTextMessage(sender, "ye")
+                }
             } else {
                 let msg = "RichardBot can provide you with all different sorts of information about the NBA. Currently only the 'Stats' and 'Games' selections are available."
                 messages.nba(sender, msg)
