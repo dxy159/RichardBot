@@ -103,7 +103,7 @@ app.post('/webhook/', function (req, res) {
                         messages.sendTextMessage(sender, "Current Standings in the Western Conference:\n\n" + msg)
                     })
                 } else {
-                    messages.sendTextMessage(sender, "Select a Conference!")
+                    messages.nba_standings(sender, "Select a Conference!")
                 }
             } else {
                 let msg = "RichardBot can provide you with all different sorts of information about the NBA. Currently only the 'Stats' and 'Games' selections are available."

@@ -298,6 +298,7 @@ module.exports = {
     help: help,
     nba: nba,
     nba_stats: nba_stats,
+    nba_standings: nba_standings,
     back: back
 }
 
