@@ -62,27 +62,27 @@ app.post('/webhook/', function (req, res) {
             if (r.editText(text).indexOf("NBASTATS") >= 0) {
                 if (r.editText(text).indexOf("POINT") >= 0 || r.editText(text).indexOf("PT") >= 0) {
                     nba.stats("POINTS", function(msg) {
-                        messages.back(sender, "Points per game: Season Leaders\n" + msg)
+                        messages.nba_stats_back(sender, "Points per game: Season Leaders\n" + msg)
                     })
                 } else if (r.editText(text).indexOf("ASSIST") >= 0) {
                     nba.stats("ASSISTS", function(msg) {
-                        messages.back(sender, "Assists per game: Season Leaders\n" + msg)
+                        messages.nba_stats_back(sender, "Assists per game: Season Leaders\n" + msg)
                     }) 
                 } else if (r.editText(text).indexOf("FIELDGOAL") >= 0 || r.editText(text).indexOf("FG") >= 0) {
                     nba.stats("FG", function(msg) {
-                        messages.back(sender, "Field goal % per game: Season Leaders\n" + msg)
+                        messages.nba_stats_back(sender, "Field goal % per game: Season Leaders\n" + msg)
                     })
                 } else if (r.editText(text).indexOf("REBOUND") >= 0 || r.editText(text).indexOf("REB") >= 0) {
                     nba.stats("REBOUNDS", function(msg) {
-                        messages.back(sender, "Rebounds per game: Season Leaders\n" + msg)
+                        messages.nba_stats_back(sender, "Rebounds per game: Season Leaders\n" + msg)
                     })
                 } else if (r.editText(text).indexOf("BLOCK") >= 0 || r.editText(text).indexOf("BLK") >= 0) {
                     nba.stats("BLOCKS", function(msg) {
-                        messages.back(sender, "Blocks per game: Season Leaders\n" + msg)
+                        messages.nba_stats_back(sender, "Blocks per game: Season Leaders\n" + msg)
                     })
                 } else if (r.editText(text).indexOf("STEAL") >= 0 || r.editText(text).indexOf("STL") >= 0) {
                     nba.stats("STEALS", function(msg) {
-                        messages.back(sender, "Steals per game: Season Leaders\n" + msg)
+                        messages.nba_stats_back(sender, "Steals per game: Season Leaders\n" + msg)
                     })
                 } else {
                     let msg = "Please choose one of the following categories and I will tell you the top 5 season leaders."
@@ -96,11 +96,11 @@ app.post('/webhook/', function (req, res) {
             } else if (r.editText(text).indexOf("NBASTANDINGS") >= 0) {
                 if (r.editText(text).indexOf("EAST") >= 0) {
                     nba.standings("EASTERN", function(msg) {
-                        messages.sendTextMessage(sender, "Current Standings in the Eastern Conference:\n\n" + msg)
+                        messages.nba_standings_back(sender, "Current Standing in the Eastern Conference:\n\n" + msg)
                     })
                 } else if (r.editText(text).indexOf("WEST") >= 0) {
                     nba.standings("WESTERN", function(msg) {
-                        messages.sendTextMessage(sender, "Current Standings in the Western Conference:\n\n" + msg)
+                        messages.nba_standings_back(sender, "Current Standing in the Western Conference:\n\n" + msg)
                     })
                 } else {
                     messages.nba_standings(sender, "Select a Conference!")
