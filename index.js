@@ -106,7 +106,7 @@ app.post('/webhook/', function (req, res) {
                     messages.nba_standings(sender, "Select a Conference!")
                 }
             } else {
-                let msg = "RichardBot can provide you with all different sorts of information about the NBA. Currently only the 'Stats' and 'Games' selections are available."
+                let msg = "RichardBot can provide you with all different sorts of information about the NBA. Please be kept updated as more and more cool NBA features will be added soon!"
                 messages.nba(sender, msg)
             }
             continue
