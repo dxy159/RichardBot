@@ -1,7 +1,7 @@
 
 // Strip all punctuation and spaces
 function editText(text) {
-	var newText = text.replace(/[.,?!' ]/g, '').toUpperCase()
+	var newText = text.replace(/[.,?!'" ]/g, '').toUpperCase()
 	return newText
 }
 
