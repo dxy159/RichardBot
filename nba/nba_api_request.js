@@ -192,9 +192,9 @@ module.exports.standings = function(conference, callback) {
 	})
 }
 
-module.exports.standings("WESTERN", function(standings) {
-	console.log(standings)
-})
+// module.exports.standings("WESTERN", function(standings) {
+// 	console.log(standings)
+// })
 
 // module.exports.games(function(game) {
 // 	console.log(game)

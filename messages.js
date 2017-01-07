@@ -144,13 +144,19 @@ function nba(sender, text) {
         "quick_replies":[
           {
             "content_type":"text",
-            "title":"Stats",
-            "payload":"NBASTATS"
+            "title":"Games",
+            "payload":"NBAGAMES"
           },
           {
             "content_type":"text",
-            "title":"Games",
-            "payload":"NBAGAMES"
+            "title":"Stats",
+            "payload":"NBASTATS"
+          },
+          
+          {
+            "content_type":"text",
+            "title":"Standings",
+            "payload":"NBASTANDINGS"
           }
         ]
     }
@@ -204,6 +210,39 @@ function nba_stats(sender, text) {
             "content_type":"text",
             "title":"FG%",
             "payload":"NBASTATSFG"
+          }
+        ]
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
+
+function nba_standings(sender, text) {
+    let messageData = {
+        "text": text,
+        "quick_replies":[
+          {
+            "content_type":"text",
+            "title":"West",
+            "payload":"NBASTANDINGSWEST"
+          },
+          {
+            "content_type":"text",
+            "title":"East",
+            "payload":"NBASTANDINGSEAST"
           }
         ]
     }
