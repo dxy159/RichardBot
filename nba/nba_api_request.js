@@ -145,6 +145,57 @@ module.exports.stats = function(category, callback) {
 	})
 }
 
+module.exports.standings = function(conference, callback) {
+	const url = "http://www.espn.com/nba/standings"
+
+	request(url, function(err, response, body) {
+		if (!err && response.statusCode == 200) {
+			$ = cheerio.load(body)
+
+			$standings = $("#main-container").children(".main-content").children(".col-a").children(".tab-content").children('.tab-pane')
+
+			// EASTERN
+			if (conference == "EASTERN") {
+				$eastern = $standings.children().eq(2).children()
+				var msg = ""
+				// FIRST TEAM STARTS AT INDEX 6
+				for (var i = 6; i < 21; i++) {
+					$team = $eastern.children().eq(i)
+					$team_name = $team.children().children().eq(2).children('span').children('span').text()
+					$wins = $team.children().eq(1).html()
+					$losses = $team.children().eq(2).html()
+					var add = (i - 5) + ". " + $team_name + ": " + $wins + "-" + $losses + "\n"
+					msg += add
+				}
+				
+				callback(msg)
+			} 
+
+			// WESTERN
+			if (conference == "WESTERN") {
+				$eastern = $standings.children().eq(4).children()
+				var msg = ""
+				// FIRST TEAM STARTS AT INDEX 6
+				for (var i = 6; i < 21; i++) {
+					$team = $eastern.children().eq(i)
+					$team_name = $team.children().children().eq(2).children('span').children('span').text()
+					$wins = $team.children().eq(1).html()
+					$losses = $team.children().eq(2).html()
+					var add = (i - 5) + ". " + $team_name + ": " + $wins + "-" + $losses + "\n"
+					msg += add
+				}
+				
+				callback(msg)
+			}
+
+		}
+	})
+}
+
+module.exports.standings("WESTERN", function(standings) {
+	console.log(standings)
+})
+
 // module.exports.games(function(game) {
 // 	console.log(game)
 // })
