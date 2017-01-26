@@ -114,8 +114,13 @@ app.post('/webhook/', function (req, res) {
             var n = text.split(' ')
             var city = n[n.length - 1]
             weather(city, function(temp, description) {
-                var msg = "Here is the current weather in " + city + 
-                    "! The temperature is " + temp + "°C. Weather status: " + description + "."
+                var msg = ""
+                if (temp == "nac") {
+                    msg = "Please enter a real city."
+                } else {
+                    var msg = "Here is the current weather in " + city + 
+                              "! The temperature is " + temp + "°C. Weather status: " + description + "."
+                }
                 messages.sendTextMessage(sender, msg)
             })
             continue

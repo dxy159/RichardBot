@@ -21,12 +21,19 @@ module.exports = function accessWeather(city, callback) {
 		response.on('end', function() {
 
 			var json = JSON.parse(body)
+			if (json['cod'] == 502) {
+				callback("nac", "nac")
+				return
+			} 
 			var temperature = parseInt(json["main"]["temp"] - 273)
 			var description = json["weather"][0]["description"]
 			callback(temperature, description)
+			
 		})
 	})
 	request.end()
 }
 
-
+module.exports("yourmom", function(temperature, description) {
+	console.log(temperature, description)
+})
