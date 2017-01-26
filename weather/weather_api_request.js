@@ -34,6 +34,6 @@ module.exports = function accessWeather(city, callback) {
 	request.end()
 }
 
-module.exports("yourmom", function(temperature, description) {
-	console.log(temperature, description)
-})
+// module.exports("yourmom", function(temperature, description) {
+// 	console.log(temperature, description)
+// })
