@@ -230,6 +230,40 @@ function nba_stats(sender, text) {
     })
 }
 
+function nba_games_quick_replies(num_games) {
+    var quick_replies = []
+    for (var i = 1; i <= num_games; i++) {
+        let game = {
+            "content_type":"text",
+            "title":i,
+            "payload":"NBAGAME" + i
+        }
+    }
+}
+
+function nba_games(sender, text, num_games) {
+    let messageData = {
+        "text": text,
+        "quick_replies":nba_games_quick_replies(num_games)
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+    console.log(messageData)
+}
+
 function nba_standings(sender, text) {
     let messageData = {
         "text": text,
@@ -328,7 +362,8 @@ module.exports = {
     nba_stats: nba_stats,
     nba_standings: nba_standings,
     nba_stats_back: nba_stats_back,
-    nba_standings_back: nba_standings_back
+    nba_standings_back: nba_standings_back,
+    nba_games: nba_games
 }
 
 
