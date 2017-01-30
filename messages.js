@@ -238,7 +238,9 @@ function nba_games_quick_replies(num_games) {
             "title":i,
             "payload":"NBAGAME" + i
         }
+        quick_replies.push(game)
     }
+    return quick_replies
 }
 
 function nba_games(sender, text, num_games) {
