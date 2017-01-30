@@ -19,6 +19,7 @@ responses = {
 	"THUMBSUP": "(Y)",
 	"BESTSCHOOL": "Obviously McGill University?? Duh!",
 	"OTHER": "Hmm.. I didn't quite get that. Ask me for 'help'"
+	"SWEARWORD": "Watch your profanity!"
 }
 
 // Function to handle greetings
@@ -63,6 +64,9 @@ function handleInput(input) {
 		return responses['URWEBSITE']
 	} else if (text.indexOf('BESTSCHOOL') >= 0) {
 		return responses['BESTSCHOOL']
+	} else if (text.indexOf('FUCK') >= 0 || text.indexOf('CUNT') >= 0 || text.indexOf('NIGG') >= 0 || 
+			   text.indexOf('BITCH') >= 0 || text.indexOf('SHIT') >= 0) {
+		return responses['SWEARWORD']
 	} else if (text.indexOf('URMASTER') >= 0) {
 		return responses['URMASTER']
 	} else if (text.indexOf('HOWAREYOU') >= 0 || text.indexOf('HBY') >= 0 || text.indexOf('HBU') >= 0) {
