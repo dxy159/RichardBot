@@ -230,24 +230,26 @@ function nba_stats(sender, text) {
     })
 }
 
-// function nba_games_quick_replies(num_games) {
-//     var quick_replies = []
-//     for (var i = 1; i <= num_games; i++) {
-//         let game = {
-//             "content_type":"text",
-//             "title":i,
-//             "payload":"NBAGAME" + i
-//         }
-//         quick_replies.push(game)
-//     }
-//     return quick_replies
-// }
+function nba_games_quick_replies(num_games) {
+    var quick_replies = []
+    for (var i = 1; i <= num_games; i++) {
+        let game = {
+            "content_type":"text",
+            "title":i,
+            "payload":"NBAGAME" + i
+        }
+        quick_replies.push(game)
+    }
+    return quick_replies
+}
 
 function nba_games(sender, text, num_games) {
+    let qr = nba_games_quick_replies(num_games)
     let messageData = {
         "text": text,
-        "quick_replies":nba_games_quick_replies(num_games)
+        "quick_replies":qr
     }
+    console.log(messageData)
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token:token},
@@ -263,7 +265,6 @@ function nba_games(sender, text, num_games) {
             console.log('Error: ', response.body.error)
         }
     })
-    console.log(messageData)
 }
 
 function nba_standings(sender, text) {

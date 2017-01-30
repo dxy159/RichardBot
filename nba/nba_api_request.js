@@ -17,8 +17,6 @@ module.exports.games = function(callback) {
 				var $game = $schedule.children().eq(i - 1)
 				var $away = $game.children().eq(0).children().eq(1).children('span').html()
 				var $home = $game.children().eq(1).children().eq(0).children().eq(1).children('span').html()
-				var $time = $game.children().eq(2).children('a')
-				callback($time)
 				var add = i + ". " + teams.get_teams($away) + " at " + teams.get_teams($home) + "\n"
 				msg_all_games += add 
 			}
