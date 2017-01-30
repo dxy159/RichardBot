@@ -22,7 +22,7 @@ module.exports.games = function(callback) {
 				var add = i + ". " + teams.get_teams($away) + " at " + teams.get_teams($home) + "\n"
 				msg_all_games += add 
 			}
-			callback(msg_all_games, $num_games)
+			callback(msg_all_games)
 		}
 	})
 }

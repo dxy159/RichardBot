@@ -230,18 +230,18 @@ function nba_stats(sender, text) {
     })
 }
 
-function nba_games_quick_replies(num_games) {
-    var quick_replies = []
-    for (var i = 1; i <= num_games; i++) {
-        let game = {
-            "content_type":"text",
-            "title":i,
-            "payload":"NBAGAME" + i
-        }
-        quick_replies.push(game)
-    }
-    return quick_replies
-}
+// function nba_games_quick_replies(num_games) {
+//     var quick_replies = []
+//     for (var i = 1; i <= num_games; i++) {
+//         let game = {
+//             "content_type":"text",
+//             "title":i,
+//             "payload":"NBAGAME" + i
+//         }
+//         quick_replies.push(game)
+//     }
+//     return quick_replies
+// }
 
 function nba_games(sender, text, num_games) {
     let messageData = {

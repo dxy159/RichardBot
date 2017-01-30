@@ -86,7 +86,7 @@ app.post('/webhook/', function (req, res) {
                 continue
             } else if (r.editText(text).indexOf("NBAGAMES") >= 0) {
                 nba.games(function(msg, num_games) {
-                    messages.nba_games(sender, "Here are the games for today!\n\n" + msg, num_games)
+                    messages.sendTextMessage(sender, "Here are the games for today!\n\n" + msg)
                 })
             } else if (r.editText(text).indexOf("NBASTANDINGS") >= 0) {
                 if (r.editText(text).indexOf("EAST") >= 0) {
