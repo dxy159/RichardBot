@@ -18,7 +18,7 @@ responses = {
 	"URMASTER": "My master's name is Richard Ni. He created me from the grains of stardust. Here is his profile: \n https://www.facebook.com/richard.ni.9",
 	"THUMBSUP": "(Y)",
 	"BESTSCHOOL": "Obviously McGill University?? Duh!",
-	"OTHER": "Hmm.. I didn't quite get that. Ask me for 'help'"
+	"OTHER": "Hmm.. I didn't quite get that. Ask me for 'help'",
 	"SWEARWORD": "Watch your profanity!"
 }
 
