@@ -56,3 +56,8 @@ function handle_nba(sender, text) {
 
 }
 
+module.exports = {
+	handle_nba: handle_nba
+}
+
+
