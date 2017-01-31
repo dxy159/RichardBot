@@ -40,7 +40,7 @@ function handle_nba(sender, text) {
     } else if (r.editText(text).indexOf("NBAGETGAME") >= 0) {
     	var index = parseInt(text.slice(-1))
     	nba.get_game(index, function(msg) {
-    		messages.sendTextMessage(sender, index)
+    		messages.sendTextMessage(sender, "helo")
     	})
     } else if (r.editText(text).indexOf("NBASTANDINGS") >= 0) {
         if (r.editText(text).indexOf("EAST") >= 0) {
