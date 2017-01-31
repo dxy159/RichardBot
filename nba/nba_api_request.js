@@ -38,6 +38,8 @@ function game_facts(id, callback) {
 				message = "Game has not started yet."
 			} else if ($main.hasClass('in')) {
 				message = "Game has started."
+			} else if ($main.hasClass('post')) {
+				message = "Game has ended."
 			}
 			callback(message)
 		}
