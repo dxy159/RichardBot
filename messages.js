@@ -236,7 +236,7 @@ function nba_games_quick_replies(num_games) {
         let game = {
             "content_type":"text",
             "title":i,
-            "payload":"NBAGAME" + i
+            "payload":"NBAGETGAME" + i
         }
         quick_replies.push(game)
     }

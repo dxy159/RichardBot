@@ -25,6 +25,49 @@ module.exports.games = function(callback) {
 	})
 }
 
+function game_facts(id, callback) {
+	const url = 'http://www.espn.com' + id
+	request(url, function(err, response, body) {
+		if (!err && response.statusCode === 200) {
+			$ = cheerio.load(body)
+
+			var message = ""
+			var $main = $("#pane-main")
+
+			if ($main.hasClass('pre')) {
+				message = "Game has not started yet."
+			} else if ($main.hasClass('in')) {
+				message = "Game has started."
+			}
+			callback(message)
+		}
+	})
+}
+
+module.exports.get_game = function(index, callback) {
+	const url = 'http://www.espn.com/nba/schedule'
+	var id = ""
+
+	request(url, function(err, response, body) {
+		if (!err && response.statusCode === 200) {
+			$ = cheerio.load(body)	
+
+			var $schedule = $("#sched-container").children().eq(2).children().children().eq(1)
+			var $game = $schedule.children().eq(index - 1)
+			id = $game.children().eq(2).children('a').attr('href')
+			game_facts(id, function(msg) {
+				callback(msg)
+			})
+		}
+	})
+
+
+}
+
+// module.exports.get_game(1, function(id) {
+// 	console.log(id)
+// })
+
 // module.exports.games(function(sched) {
 // 	console.log(sched)
 // })

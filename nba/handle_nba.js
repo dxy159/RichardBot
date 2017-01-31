@@ -1,6 +1,7 @@
 const messages = require('./../messages.js')
 const r = require('./../responses.js')
 const nba = require('./nba_api_request.js')
+var id = ""
 
 function handle_nba(sender, text) {
     if (r.editText(text).indexOf("NBASTATS") >= 0) {
@@ -36,6 +37,11 @@ function handle_nba(sender, text) {
         nba.games(function(msg, num_games) {
             messages.nba_games(sender, "Here are the games for today!\n\n" + msg, num_games)
         })
+    } else if (r.editText(text).indexOf("NBAGETGAME")) {
+    	var index = parseInt(text.slice(-1))
+    	nba.get_game(index, function(msg) {
+    		messages.sendTextMessage(sender, msg)
+    	})
     } else if (r.editText(text).indexOf("NBASTANDINGS") >= 0) {
         if (r.editText(text).indexOf("EAST") >= 0) {
             nba.standings("EASTERN", function(msg) {
