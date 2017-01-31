@@ -35,7 +35,7 @@ function handle_nba(sender, text) {
         }
     } else if (r.editText(text).indexOf("NBAGAMES") >= 0) {
         nba.games(function(msg, num_games) {
-            messages.nba_games(sender, "Here are the games for today!\n\n" + msg, num_games)
+            messages.nba_games(sender, "Here are the games for today!\n\n" + msg + "\n\nSelect the number corresponding to a game for more details!", num_games)
         })
     } else if (r.editText(text).indexOf("NBAGETGAME") >= 0) {
     	var index = parseInt(text[text.length - 2])
