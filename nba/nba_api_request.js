@@ -34,11 +34,18 @@ function game_facts(id, callback) {
 			var message = ""
 			var $main = $("#pane-main")
 
+			// GAME HASN'T STARTED
 			if ($main.hasClass('pre')) {
+				// $home_wins = $("#gamepackage-column-wrap table.mod-data tbody")
+				// callback($home_wins)
 				message = "Game has not started yet."
-			} else if ($main.hasClass('in')) {
+			} 
+			// GAME HAS STARTED
+			else if ($main.hasClass('in')) {
 				message = "Game has started."
-			} else if ($main.hasClass('post')) {
+			} 
+			// GAME HAS ENDED
+			else if ($main.hasClass('post')) {
 				message = "Game has ended."
 			}
 			callback(message)
@@ -66,9 +73,9 @@ module.exports.get_game = function(index, callback) {
 
 }
 
-// module.exports.get_game(1, function(id) {
-// 	console.log(id)
-// })
+module.exports.get_game(1, function(id) {
+	console.log(id)
+})
 
 // module.exports.games(function(sched) {
 // 	console.log(sched)
