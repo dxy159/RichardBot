@@ -49,6 +49,7 @@ app.post('/webhook/', function (req, res) {
             var status = JSON.stringify(event.message.quick_reply.payload)
             text = status
         }
+        messages.sendTextMessage(sender, text)
         if (text === 'Generic') {
             messages.sendGenericMessage(sender)
             continue
