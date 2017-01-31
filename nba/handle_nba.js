@@ -37,7 +37,7 @@ function handle_nba(sender, text) {
         nba.games(function(msg, num_games) {
             messages.nba_games(sender, "Here are the games for today!\n\n" + msg, num_games)
         })
-    } else if (r.editText(text).indexOf("NBAGETGAME")) {
+    } else if (r.editText(text).indexOf("NBAGETGAME") >= 0) {
     	var index = parseInt(text.slice(-1))
     	nba.get_game(index, function(msg) {
     		messages.sendTextMessage(sender, msg)
