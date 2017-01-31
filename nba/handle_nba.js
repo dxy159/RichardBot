@@ -38,11 +38,10 @@ function handle_nba(sender, text) {
             messages.nba_games(sender, "Here are the games for today!\n\n" + msg, num_games)
         })
     } else if (r.editText(text).indexOf("NBAGETGAME") >= 0) {
-    	var index = parseInt(text[text.length - 1])
-    	messages.sendTextMessage(sender, index)
-    	nba.get_game(index, function(msg) {
-    		messages.sendTextMessage(sender, "helo")
-    	})
+    	messages.sendTextMessage(sender, text)
+    	// nba.get_game(index, function(msg) {
+    	// 	messages.sendTextMessage(sender, "helo")
+    	// })
     } else if (r.editText(text).indexOf("NBASTANDINGS") >= 0) {
         if (r.editText(text).indexOf("EAST") >= 0) {
             nba.standings("EASTERN", function(msg) {
