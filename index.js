@@ -50,9 +50,6 @@ app.post('/webhook/', function (req, res) {
             text = status
         }
         //messages.sendTextMessage(sender, text)
-        if (r.editText(text).indexOf("MICKY") >= 0) {
-            messages.sendTextMessage(sender, "Micky's a fag.")
-        }
         if (r.editText(text).indexOf("NBA") >= 0) {
             nba.handle_nba(sender, text)
             continue
