@@ -16,7 +16,9 @@ module.exports.games = function(callback) {
 			for (var i = 1; i < $num_games + 1; i++) {
 				var $game = $schedule.children().eq(i - 1)
 				var $away = $game.children().eq(0).children().eq(1).children('span').html()
-				var $home = $game.children().eq(1).children().eq(0).children().eq(1).children('span').html()
+				var $home = $game.children().eq(1).children().eq(0).children().eq(1).children('span').text()
+				var $time = $game.children().eq(2).children().html()
+				console.log($time)
 				var add = i + ". " + teams.get_teams($away) + " at " + teams.get_teams($home) + "\n"
 				msg_all_games += add 
 			}
@@ -24,6 +26,10 @@ module.exports.games = function(callback) {
 		}
 	})
 }
+
+module.exports.games(function(a,b){
+
+})
 
 function game_facts(id, callback) {
 	const url = 'http://www.espn.com' + id
@@ -73,9 +79,9 @@ module.exports.get_game = function(index, callback) {
 
 }
 
-module.exports.get_game(1, function(id) {
-	console.log(id)
-})
+// module.exports.get_game(1, function(id) {
+// 	console.log(id)
+// })
 
 // module.exports.games(function(sched) {
 // 	console.log(sched)
