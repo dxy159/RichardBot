@@ -1,7 +1,7 @@
 const request = require('request')
 
 // Inject token as environmental variables
-const token = "EAAZA8BfowKQgBAAzXQsP71No5NzHbz1CutWQIlke2ZChYVYVOGZByBoL8lIpExlHV97UgsDMyziu7q4kqXPycUkIwU8eYgwNeRafkn7VoLrNabwxJSvQWoXupQ1SQtH5gE80il4UDgxsgDOWyDd6Ttzkfx8qOWjQZBPeORwFPgZDZD"
+const token = "EAAD8yctKm5MBAAQCfKZCEJXnWzmwRqHdaRFdTZCVISi9Qxf9QCj6Avu1f9nHju8qIGUvngqW44VSKZBogtMK5QZBejLcTEzVc4tEihUodEeWiicDgxikOkuCUi79WFbF39HnrhZA9SaZCKUmPwwu9dwBcDWg7KoCjNFZAXHKs6PpAZDZD"
 
 // To echo back messages
 function sendTextMessage(sender, text) {
