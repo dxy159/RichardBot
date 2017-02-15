@@ -20,7 +20,8 @@ responses = {
 	"BESTSCHOOL": "Obviously McGill University?? Duh!",
 	"OTHER": "Hmm.. I didn't quite get that. Ask me for 'help'",
 	"SWEARWORD": "Watch your profanity!",
-	"RICHARD": "Richard is God."
+	"RICHARD": "Richard is God.",
+	"SAD": ":("
 }
 
 // Function to handle greetings
@@ -83,6 +84,8 @@ function handleInput(input) {
 	} else if (text.indexOf('COOL') >= 0 || text.indexOf('GOOD') >= 0 || text.indexOf('WOW') >= 0 || 
 			   text.indexOf('NICE') >= 0 || text.indexOf('OK') >= 0) {
 		return responses['THUMBSUP']
+	} else if (text.indexOf(':(') >= 0) {
+		return responses['SAD']
 	} else {
 		return responses['OTHER']
 	}
