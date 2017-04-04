@@ -1,7 +1,7 @@
 const request = require('request')
 
 // Inject token as environmental variables
-const token = "EAAD8yctKm5MBAEvPRJkKjB3wBPoFlbhuNV0SGwZBZBsXzQPndeiox0HWZAqWJe3YEd3d21ZCqM9GX2xe3e9I3VVAuZAvJi37f7gKboPWjPr0zakTXS3ZCc0uyEhxNHHoci4eEriWgbgwGl3W8epKGUCfMBgQGxrpK2R4PUC8SahQZDZD"
+const token = process.env.BOT_KEY
 
 // To echo back messages
 function sendTextMessage(sender, text) {
